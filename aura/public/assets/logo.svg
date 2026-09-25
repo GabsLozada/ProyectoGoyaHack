@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff7657"/><stop offset="1" stop-color="#ffb451"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#g)"/>
+  <!-- ruta punteada hasta el salón -->
+  <path d="M30 22 C34 12 44 10 50 15" fill="none" stroke="#15131b" stroke-width="3" stroke-linecap="round" stroke-dasharray="0.1 5.6"/>
+  <circle cx="50.5" cy="15.5" r="4.2" fill="#fff"/>
+  <!-- vaso para llevar -->
+  <rect x="20" y="25" width="24" height="5.5" rx="2.75" fill="#15131b"/>
+  <path d="M22.2 30.5h19.6l-2.4 17.2a4.2 4.2 0 0 1-4.2 3.6h-6.4a4.2 4.2 0 0 1-4.2-3.6z" fill="#15131b"/>
+  <rect x="23.6" y="36.5" width="16.8" height="5.2" fill="#fff" opacity=".92"/>
+  <!-- líneas de velocidad -->
+  <path d="M8.5 36h8M11.5 42.5h6M14 49h4.5" stroke="#15131b" stroke-width="2.6" stroke-linecap="round"/>
+</svg>
