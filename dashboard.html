@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura — Mi cuenta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<noscript><style>body{opacity:1!important}</style></noscript>
+</head>
+<body class="app-page dashboard-page">
+<header class="site-nav">
+  <a class="brand" href="index.html">
+    <div class="brand-mark">A</div>
+    <div class="brand-text"><div class="display">Aura</div><small>Mi cuenta</small></div>
+  </a>
+  <div class="nav-ctas">
+    <span class="nav-user" id="navUser"></span>
+    <button class="nav-ghost button-link" id="logoutBtn">Cerrar sesión</button>
+  </div>
+</header>
+<main class="dashboard-main">
+  <section class="dashboard-hero">
+    <span class="app-kicker">AURA · INICIO</span>
+    <h1 id="welcomeName">Hola 👋</h1>
+    <p>¿Qué quieres hacer hoy?</p>
+  </section>
+
+  <section class="role-grid">
+    <a class="role-card role-order" href="pedido.html">
+      <div class="role-icon">🛍️</div>
+      <div><span>COMPRAR</span><h2>Realizar un pedido</h2><p>Pide algo y recíbelo donde estés.</p></div>
+      <b>→</b>
+    </a>
+    <a class="role-card role-runner" href="runner.html">
+      <div class="role-icon">🏃</div>
+      <div><span>RUNNER</span><h2>Ser Runner</h2><p>Ve pedidos disponibles y toma un recorrido.</p></div>
+      <b>→</b>
+    </a>
+  </section>
+
+  <section class="dashboard-section" id="activeOrderSection">
+    <div class="section-head"><h2>Pedido activo</h2><span id="activeStatus"></span></div>
+    <div id="dashboardActiveOrder"></div>
+  </section>
+
+  <section class="dashboard-section">
+    <div class="section-head"><h2>Historial</h2><span id="historyCount"></span></div>
+    <div class="history-list" id="orderHistory"></div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

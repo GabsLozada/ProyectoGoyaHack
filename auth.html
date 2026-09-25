@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura — Acceso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<noscript><style>body{opacity:1!important}</style></noscript>
+</head>
+<body class="app-page auth-page">
+<header class="site-nav">
+  <a class="brand" href="index.html">
+    <div class="brand-mark">A</div>
+    <div class="brand-text"><div class="display">Aura</div><small>Campus P2P Network</small></div>
+  </a>
+  <a href="index.html" class="nav-ghost">← Volver al inicio</a>
+</header>
+
+<main class="auth-page-main">
+  <section class="auth-page-card">
+    <div class="auth-page-brand">
+      <span class="auth-kicker">BIENVENIDO A AURA</span>
+      <h1 id="authTitle">Bienvenido de vuelta</h1>
+      <p id="authLead">Entra a tu cuenta para continuar.</p>
+    </div>
+
+    <div class="auth-tabs" role="tablist" aria-label="Acceso a Aura">
+      <button class="auth-tab active" type="button" data-mode="login">Iniciar sesión</button>
+      <button class="auth-tab" type="button" data-mode="register">Crear cuenta</button>
+    </div>
+
+    <form class="auth-form auth-mode-panel" id="loginForm">
+      <div class="auth-field">
+        <label for="logEmail">Correo</label>
+        <input class="auth-input" id="logEmail" type="email" placeholder="tu@correo.com" autocomplete="email" required>
+      </div>
+      <div class="auth-field">
+        <label for="logPass">Contraseña</label>
+        <input class="auth-input" id="logPass" type="password" placeholder="Tu contraseña" autocomplete="current-password" required>
+      </div>
+      <div class="form-error" id="loginError" aria-live="polite"></div>
+      <button class="auth-btn primary" type="submit">Iniciar sesión</button>
+    </form>
+
+    <form class="auth-form auth-mode-panel" id="registerForm" hidden>
+      <div class="auth-field">
+        <label for="regName">Nombre</label>
+        <input class="auth-input" id="regName" type="text" placeholder="Tu nombre" autocomplete="name" required>
+      </div>
+      <div class="auth-field">
+        <label for="regEmail">Correo</label>
+        <input class="auth-input" id="regEmail" type="email" placeholder="Gmail, Outlook, Yahoo, UNAM…" autocomplete="email" required>
+        <small class="field-hint">Aceptamos cualquier dominio de correo.</small>
+      </div>
+      <div class="auth-field">
+        <label for="regPass">Contraseña</label>
+        <input class="auth-input" id="regPass" type="password" placeholder="Mínimo 6 caracteres" minlength="6" autocomplete="new-password" required>
+      </div>
+      <div class="form-error" id="registerError" aria-live="polite"></div>
+      <button class="auth-btn primary" type="submit">Crear cuenta</button>
+    </form>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

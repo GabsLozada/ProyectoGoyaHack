@@ -3,57 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AuraCafé — Panel Runner</title>
+<title>Aura — Runner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<noscript><style>body{opacity:1!important}</style></noscript>
 </head>
-<body>
-<div class="shell">
+<body class="app-page runner-page">
+<header class="site-nav runner-nav">
+  <a class="brand" href="dashboard.html">
+    <div class="brand-mark">A</div>
+    <div class="brand-text"><div class="display">Aura</div><small>Modo Runner</small></div>
+  </a>
+  <a href="dashboard.html" class="nav-ghost">← Mi cuenta</a>
+</header>
 
-  <header class="topbar">
-    <div class="brand">
-      <div class="brand-mark">🏃</div>
-      <div class="brand-text">
-        <div class="display">Ana R.</div>
-        <small>Runner desde hoy</small>
-      </div>
+<main class="runner-main">
+  <section class="runner-hero">
+    <div>
+      <span class="app-kicker">AURA · RUNNER</span>
+      <h1>Pedidos disponibles</h1>
+      <p>Cuando un comprador confirma, su pedido aparece aquí.</p>
     </div>
-    <div class="avail-toggle">
-      <span style="font-size:12px;font-weight:600;">Disponible</span>
-      <div class="toggle on" id="availToggle"></div>
+    <div class="runner-summary">
+      <small>Entregas completadas</small><strong id="runnerDeliveries">0</strong>
     </div>
-  </header>
+  </section>
 
-  <div class="stats-row">
-    <div class="stat-card">
-      <div class="num" id="statEarnings">$0</div>
-      <div class="lbl">Ganancias hoy</div>
-    </div>
-    <div class="stat-card">
-      <div class="num" id="statDeliveries">0</div>
-      <div class="lbl">Entregas hoy</div>
-    </div>
-    <div class="stat-card">
-      <div class="num">$10</div>
-      <div class="lbl">Por entrega</div>
-    </div>
-  </div>
+  <section class="runner-section">
+    <div class="runner-panel-head"><div><span class="section-label">DISPONIBLES</span><h2>Listos para tomar</h2></div><span class="live-pill"><i></i> En vivo</span></div>
+    <div class="order-list" id="availableOrders"></div>
+  </section>
 
-  <div class="tabs">
-    <button class="tab active" id="tabAvail">Disponibles <span class="badge" id="badgeAvail">0</span></button>
-    <button class="tab" id="tabMine">Mis entregas <span class="badge" id="badgeMine">0</span></button>
-  </div>
-
-  <div class="order-list" id="orderList"><!-- JS --></div>
-
-  <div style="padding:0 20px 24px;">
-    <a href="index.html" class="switch-view" style="background:var(--ink);display:inline-flex;">🛒 Ver vista cliente</a>
-  </div>
-
-</div>
-
+  <section class="runner-section">
+    <div class="runner-panel-head"><div><span class="section-label">MIS RECORRIDOS</span><h2>Pedidos que aceptaste</h2></div></div>
+    <div class="order-list" id="runnerActiveOrders"></div>
+  </section>
+</main>
 <script src="app.js"></script>
-<script src="runner.js"></script>
 </body>
 </html>

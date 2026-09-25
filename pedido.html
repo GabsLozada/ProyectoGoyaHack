@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura — Hacer un pedido</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<noscript><style>body{opacity:1!important}</style></noscript>
+</head>
+<body class="pedido-body">
+
+<header class="site-nav pedido-nav">
+  <a class="brand" href="dashboard.html">
+    <div class="brand-mark">A</div>
+    <div class="brand-text">
+      <div class="display">Aura</div>
+      <small>Hacer un pedido</small>
+    </div>
+  </a>
+  <a href="dashboard.html" class="nav-ghost" id="backHome">← Mi cuenta</a>
+</header>
+
+<main class="pedido-main">
+  <div class="pedido-shell">
+    <div id="menuView">
+      <section class="hero app-hero">
+        <span class="app-kicker">AURA · PEDIR</span>
+        <h1>¿Qué necesitas antes de tu siguiente clase?</h1>
+        <p>Selecciona algo rápido y te lo llevamos hasta tu salón.</p>
+        <div class="app-live"><span class="live-dot"></span> 6 runners activos ahora</div>
+      </section>
+
+      <div class="route" aria-hidden="true">
+        <div class="route-line"></div>
+        <div class="route-node">☕</div>
+        <div class="route-node end">🎒</div>
+        <div class="route-runner">🏃</div>
+      </div>
+
+      <div class="section-head"><h2>Antojos rápidos</h2><span>4 opciones</span></div>
+      <div class="product-list" id="productList"></div>
+    </div>
+
+    <div id="trackingView" style="display:none;"></div>
+  </div>
+</main>
+
+<div class="cart-bar" id="cartBar">
+  <div class="cart-bar-info">
+    <div class="cart-count" id="cartCount">0</div>
+    <div><small>Tu pedido</small><div class="cart-bar-total" id="cartTotal">$0.00 MXN</div></div>
+  </div>
+  <button class="cart-bar-cta" id="cartBarCta">Continuar →</button>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<div class="sheet" id="sheet">
+  <div class="sheet-handle"></div>
+  <span class="sheet-kicker">ÚLTIMO PASO</span>
+  <h3>¿A dónde te lo llevamos?</h3>
+  <p class="sheet-copy">Elige un punto del campus o escribe tu salón.</p>
+  <div class="chip-row" id="chipRow"></div>
+  <input type="text" id="locInput" class="loc-input" placeholder="Ej. Edificio I · I-302">
+  <div id="sheetSummary"></div>
+  <div class="payment-note"><span>🔐</span><div><strong>Pago digital preparado</strong><small>La integración real de Pollar/Stellar se conecta en el siguiente paso.</small></div></div>
+  <button class="confirm-btn" id="confirmBtn" disabled>Confirmar pedido</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
