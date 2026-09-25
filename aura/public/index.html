@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura — Tu campus conectado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+<noscript><style>body{opacity:1!important}</style></noscript>
+</head>
+<body>
+
+
+<header class="site-nav">
+  <a class="brand" href="#top" aria-label="Aura inicio">
+    <img class="brand-mark" src="assets/logo.svg" alt="">
+    <div class="brand-text">
+      <div class="display">Aura</div>
+      <small>Campus P2P Network</small>
+    </div>
+  </a>
+  <nav class="nav-links">
+    <a href="#equipo">Quiénes somos</a>
+    <a href="#objetivo">Objetivo</a>
+    <a href="#solucion">Cómo funciona</a>
+    <a href="#seguridad">Seguridad</a>
+    <a href="#tecnologia">Tecnología</a>
+  </nav>
+  <div class="nav-ctas">
+    <a href="auth.html?mode=login" class="nav-ghost" data-account-link>Iniciar sesión</a>
+    <a href="auth.html?mode=register" class="nav-btn">Crear cuenta</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero-cinematic">
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/hero-poster.svg">
+      <source src="assets/aura-loop.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay"></div>
+    <div class="hero-cinematic-inner">
+      <div class="hero-content">
+        <div class="hero-kicker"><span class="pulse-dot"></span> Aura · Campus conectado</div>
+        <h1>Tu tiempo vale.<span>Tu antojo también.</span></h1>
+        <p class="hero-lead">Aura conecta a estudiantes que necesitan algo rápido con estudiantes que ya tienen tiempo libre para llevarlo.</p>
+        <div class="hero-actions">
+          <a href="auth.html?mode=register" class="hero-button hero-button-primary">Crear cuenta <span>→</span></a>
+          <a href="#solucion" class="hero-button hero-button-glass">Ver cómo funciona</a>
+        </div>
+        <div class="hero-proof">
+          <div><strong>10 min</strong><span>entre clases</span></div>
+          <div class="proof-line"></div>
+          <div><strong>25 min</strong><span>de fila evitables</span></div>
+          <div class="proof-line"></div>
+          <div><strong>1:1</strong><span>entrega directa</span></div>
+        </div>
+      </div>
+
+      <div class="hero-ui" aria-label="Vista previa de Aura">
+        <div class="phone-shell">
+          <div class="phone-top"><span>10:42</span><span>● ● ●</span></div>
+          <div class="phone-brand"><div class="mini-logo">A</div><div><strong>Aura</strong><small>Campus network</small></div></div>
+          <div class="phone-title"><small>PEDIDO ACTIVO</small><h3>Tu café ya viene ☕</h3></div>
+          <div class="live-order">
+            <div class="live-product">☕</div>
+            <div class="live-copy"><strong>Café Americano</strong><span>Cafetería DIE</span></div>
+            <strong>$25</strong>
+          </div>
+          <div class="mini-map">
+            <div class="map-location"><span>☕</span><small>DIE</small></div>
+            <div class="map-path"><div class="map-runner">🏃</div></div>
+            <div class="map-location"><span>🎒</span><small>I-302</small></div>
+          </div>
+          <div class="arrival-box"><div><small>Runner</small><strong>Ana R.</strong></div><div><small>Llega en</small><strong>4 min</strong></div></div>
+        </div>
+        <div class="floating-card floating-payment"><div class="float-icon green">✓</div><div><small>Pago protegido</small><strong>Pollar + Stellar</strong></div></div>
+        <div class="floating-card floating-runner"><div class="avatar">🏃</div><div><small>Runner conectado</small><strong>Recorrido aceptado</strong></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-strip" aria-label="Resumen del proyecto">
+    <span>Diseñado para CU</span><i></i><span>P2P entre estudiantes</span><i></i><span>Pago digital</span><i></i><span>Entrega hiperlocal</span>
+  </section>
+
+  <section class="pitch-section team-section" id="equipo">
+    <div class="section-headline">
+      <div><span class="section-label">QUIÉNES SOMOS</span><h2>3 estudiantes, 3 capas del producto.</h2></div>
+      <p>Un equipo pequeño de CU, cada quien resolviendo la parte que mejor domina para construir una experiencia funcional de principio a fin.</p>
+    </div>
+    <div class="team-grid">
+      <article class="team-card">
+        <span class="team-tag" style="--tag-bg:var(--blue-soft);--tag-fg:var(--blue);">Backend</span>
+        <h3>Servidor de pedidos</h3>
+        <p>Node + Express + SQLite. Recibe los pedidos, verifica cada pago en Stellar, guarda el dinero en custodia y lo libera al Runner cuando el comprador da su código.</p>
+      </article>
+      <article class="team-card">
+        <span class="team-tag" style="--tag-bg:var(--accent-soft);--tag-fg:#c65531;">Frontend</span>
+        <h3>La web y la interfaz</h3>
+        <p>HTML, JavaScript y CSS a mano. El sitio que ves ahora mismo: la landing, el acceso y el flujo de pedido, cada uno en su propia página.</p>
+      </article>
+      <article class="team-card">
+        <span class="team-tag" style="--tag-bg:var(--green-soft);--tag-fg:var(--green);">Fintech</span>
+        <h3>Pollar &amp; Stellar</h3>
+        <p>Onboarding invisible: cada alumno recibe una wallet de Stellar sin darse cuenta que la tiene. El pago se asegura al pedir y se liquida al entregar.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="story-showcase" id="objetivo">
+    <div class="story-heading">
+      <span class="eyebrow">NUESTRO OBJETIVO</span>
+      <h2>Que nadie pierda su descanso<br>por hacer un mandado.</h2>
+      <p>Queremos que comprar algo rápido dentro del campus tome minutos, no la mitad del descanso, conectando a quien tiene hambre con quien ya tiene tiempo libre.</p>
+    </div>
+    <div class="story-grid">
+      <article class="story-card story-image-card">
+        <img src="assets/objetivo-comprador.svg" alt="Estudiante haciendo un pedido desde el campus">
+        <div class="story-image-overlay"><span class="story-number">01</span><div><small>EL COMPRADOR</small><h3>Recupera los minutos que perdía en la fila.</h3></div></div>
+      </article>
+      <article class="story-card story-center">
+        <span class="story-number dark">02</span><div class="connect-symbol">↕</div><h3>Aura los conecta.</h3>
+        <p>Pedido publicado. Runner encontrado. Entrega coordinada.</p>
+        <div class="story-transaction"><div><span>PEDIDO</span><strong>$35</strong></div><div class="transaction-arrow">→</div><div><span>RUNNER</span><strong>+$10</strong></div></div>
+      </article>
+      <article class="story-card story-image-card">
+        <img src="assets/objetivo-runner.svg" alt="Estudiante runner caminando dentro del campus">
+        <div class="story-image-overlay"><span class="story-number">03</span><div><small>EL RUNNER</small><h3>Convierte un hueco libre en ingreso.</h3></div></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="pitch-section solution-section" id="solucion">
+    <div class="section-label">CÓMO FUNCIONA</div>
+    <div class="section-headline"><h2>Tres pasos. Cero complicaciones.</h2><p>Pide, conecta y recibe sin perder tu descanso.</p></div>
+    <div class="steps-grid premium-steps">
+      <article class="step-card"><span class="step-num">01</span><div class="step-icon">☕</div><h3>Publica tu antojo</h3><p>Selecciona producto y salón. Aura deja el pedido listo para que alguien lo tome.</p></article>
+      <article class="step-card"><span class="step-num">02</span><div class="step-icon">🏃</div><h3>Un runner acepta</h3><p>Un estudiante con tiempo libre toma el pedido y hace el recorrido dentro del campus.</p></article>
+      <article class="step-card"><span class="step-num">03</span><div class="step-icon">✓</div><h3>Entrega y liquidación</h3><p>Al confirmar la entrega, el flujo queda listo para liberar el pago al runner.</p></article>
+    </div>
+  </section>
+
+  <section class="pitch-section security-section" id="seguridad">
+    <div class="section-headline">
+      <div><span class="section-label">SEGURIDAD Y PRIVACIDAD</span><h2>La confianza se diseña, no se supone.</h2></div>
+      <p>Antes de escalar, dejamos claras las salvaguardas mínimas entre quien pide y quien entrega.</p>
+    </div>
+    <div class="security-grid">
+      <article class="security-card">
+        <div class="security-icon">🎓</div>
+        <h3>Cuenta verificada</h3>
+        <p>Puedes registrarte con Gmail, Outlook, Yahoo o correo universitario. El dominio no limita el acceso.</p>
+      </article>
+      <article class="security-card">
+        <div class="security-icon">🔐</div>
+        <h3>Pago en custodia</h3>
+        <p>Pollar retiene el pago desde que confirmas tu pedido; nunca se maneja efectivo directo entre alumnos.</p>
+      </article>
+      <article class="security-card">
+        <div class="security-icon">⭐</div>
+        <h3>Calificación y reportes</h3>
+        <p>Cada entrega queda calificada. Cualquier incidente se puede reportar y se revisa antes de liberar el pago.</p>
+      </article>
+      <article class="security-card">
+        <div class="security-icon">📍</div>
+        <h3>Solo tu salón, nada más</h3>
+        <p>Compartes el punto de entrega, no tu ubicación en tiempo real ni datos personales sensibles.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="fintech-section" id="tecnologia">
+    <div class="fintech-copy">
+      <span class="eyebrow light">LA CAPA FINTECH</span>
+      <h2>La confianza no debería depender de traer efectivo.</h2>
+      <p>La experiencia está preparada para integrar Pollar y Stellar: onboarding invisible, wallet y liquidación del pago después de la entrega.</p>
+      <div class="tech-tags"><span>Pollar</span><span>Stellar</span><span>USDC-ready</span><span>Testnet</span></div>
+    </div>
+    <div class="payment-console">
+      <div class="console-top"><span>TRANSACTION FLOW</span><span class="console-live">● LIVE DEMO</span></div>
+      <div class="console-row"><span class="console-icon">01</span><div><small>COMPRADOR</small><strong>Pedido confirmado</strong></div><b>✓</b></div>
+      <div class="console-line"></div>
+      <div class="console-row"><span class="console-icon">02</span><div><small>AURA</small><strong>Pago preparado</strong></div><b>✓</b></div>
+      <div class="console-line"></div>
+      <div class="console-row"><span class="console-icon">03</span><div><small>STELLAR</small><strong>Liquidación al entregar</strong></div><b class="pending">●</b></div>
+      <div class="console-hash"><small>TX HASH</small><code>stellar_demo_7f3a...c91</code></div>
+    </div>
+  </section>
+
+  <section class="metrics-band">
+    <div><strong>25 min</strong><span>fila potencial evitada</span></div>
+    <div><strong>10 min</strong><span>descanso entre clases</span></div>
+    <div><strong>$10</strong><span>ganancia demo por entrega</span></div>
+    <div><strong>1 campus</strong><span>para validar antes de escalar</span></div>
+  </section>
+
+  <section class="cta-band" id="cta">
+    <div class="demo-heading">
+      <span class="eyebrow light">TODO LISTO</span>
+      <h2>Crea tu cuenta y haz tu primer pedido.</h2>
+      <p>Toma 20 segundos. Después te llevamos directo a la página de pedidos.</p>
+      <a href="auth.html?mode=register" class="hero-button hero-button-primary" style="margin-top:26px;">Crear cuenta <span>→</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="brand"><img class="brand-mark" src="assets/logo.svg" alt=""><div class="brand-text"><div class="display">Aura</div><small>Campus P2P Network</small></div></div>
+  <p>Aura · pedidos y entregas dentro del campus.</p>
+</footer>
+<script src="pollar.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

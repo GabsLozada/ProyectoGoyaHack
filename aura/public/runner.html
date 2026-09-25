@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura — Modo Runner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+<noscript><style>body{opacity:1!important}</style></noscript>
+</head>
+<body class="app-page runner-page">
+<header class="site-nav">
+  <a class="brand" href="dashboard.html">
+    <img class="brand-mark" src="assets/logo.svg" alt="">
+    <div class="brand-text"><div class="display">Aura</div><small>Modo Runner</small></div>
+  </a>
+  <div class="nav-ctas">
+    <a href="dashboard.html" class="nav-ghost">← Mi cuenta</a>
+    <button class="nav-ghost button-link" id="logoutBtn">Cerrar sesión</button>
+  </div>
+</header>
+
+<main class="runner-main">
+  <section class="runner-hero">
+    <div>
+      <span class="app-kicker">AURA · RUNNER</span>
+      <h1>¿Tienes un hueco libre?</h1>
+      <p>Toma un pedido, cómpralo y llévalo al salón. Cobras al dar el código.</p>
+    </div>
+    <div class="runner-summary">
+      <small>Ganado en envíos</small><strong id="runnerEarnings">$0</strong>
+      <small><span id="runnerDeliveries">0</span> entregas</small>
+    </div>
+  </section>
+
+  <section class="runner-section">
+    <div class="section-head"><h2>Mis recorridos</h2><span><b id="badgeMine">0</b> activos</span></div>
+    <div class="order-list" id="runnerActiveOrders"></div>
+  </section>
+
+  <section class="runner-section">
+    <div class="section-head"><h2>Disponibles</h2><span><b id="badgeAvail">0</b> pedidos</span></div>
+    <div class="order-list" id="availableOrders"></div>
+  </section>
+</main>
+<script src="pollar.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
