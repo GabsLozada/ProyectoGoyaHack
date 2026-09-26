@@ -15,4 +15,11 @@ module.exports = {
   deliveryFeeMxn: num(process.env.DELIVERY_FEE_MXN, 15),
   platformFeeMxn: num(process.env.PLATFORM_FEE_MXN, 3),
   simulate: process.env.SIMULATE_PAYMENTS === 'true',
+  pollarEnv: process.env.POLLAR_ENV || 'testnet',
+
+  pollarSecretKey: process.env.POLLAR_SECRET_KEY || '',
+
+  pollarApiUrl: process.env.POLLAR_API_URL || '',
+
+  pollarPublishableKey: process.env.POLLAR_PUBLISHABLE_KEY || '',
 };
