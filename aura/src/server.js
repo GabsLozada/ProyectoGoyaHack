@@ -27,9 +27,9 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
 
 if (!process.env.VERCEL) {
   app.listen(config.port, () => {
-    console.log(${config.appName} backend en http://localhost:${config.port});
-    console.log(Red: ${config.network} (${stellar.horizonUrl}) | Asset: ${config.assetCode} | Escrow: ${stellar.escrowAddress()});
-    if (config.simulate) console.log('⚠ SIMULATE_PAYMENTS=true: no se toca la red');
+    console.log(config.appName + ' backend en http://localhost:' + config.port);
+    console.log('Red: ' + config.network + ' (' + stellar.horizonUrl + ') | Asset: ' + config.assetCode + ' | Escrow: ' + stellar.escrowAddress());
+    if (config.simulate) console.log('SIMULATE_PAYMENTS=true: no se toca la red');
   });
 }
 
