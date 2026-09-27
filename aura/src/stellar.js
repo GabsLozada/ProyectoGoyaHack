@@ -11,9 +11,17 @@ const horizonUrl = config.horizonUrl
 const server = new Horizon.Server(horizonUrl);
 const networkPassphrase = config.network === 'public' ? Networks.PUBLIC : Networks.TESTNET;
 
-const escrow = config.escrowSecret ? Keypair.fromSecret(config.escrowSecret) : null;
+let escrow = null;
+const rawSecret = (config.escrowSecret || '').trim().replace(/^["']|["']$/g, '');
+if (rawSecret) {
+  if (StrKey.isValidEd25519SecretSeed(rawSecret)) {
+    escrow = Keypair.fromSecret(rawSecret);
+  } else {
+    console.error('[stellar] ESCROW_SECRET inválido (debe empezar con S y tener 56 caracteres). Largo recibido: ' + rawSecret.length + ', empieza con: ' + rawSecret[0]);
+  }
+}
 if (!escrow && !config.simulate) {
-  console.warn('[stellar] Falta ESCROW_SECRET. Corre `npm run setup:escrow` o usa SIMULATE_PAYMENTS=true');
+  console.warn('[stellar] Falta ESCROW_SECRET válido. Corre npm run setup:escrow o usa SIMULATE_PAYMENTS=true');
 }
 
 const asset = config.assetCode === 'XLM' ? Asset.native() : new Asset(config.assetCode, config.assetIssuer);
