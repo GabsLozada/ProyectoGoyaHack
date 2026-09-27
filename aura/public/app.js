@@ -207,6 +207,56 @@ if (navUser && getUser()) navUser.textContent = getUser().email;
 if (document.body.classList.contains('dashboard-page')) {
   const user = requireUser();
   if (user) {
+        // ===== Pollar Wallet =====
+    const walletBtn = document.getElementById('connectWalletBtn');
+    const walletStatus = document.getElementById('walletStatus');
+
+    if (walletBtn) {
+      walletBtn.addEventListener('click', async () => {
+        try {
+          walletBtn.disabled = true;
+          walletBtn.textContent = 'Conectando wallet...';
+
+          if (!window.pollarClient) {
+            throw new Error('Pollar no está cargado');
+          }
+
+          // Conectar o crear Smart Wallet del usuario
+          const wallet = await window.pollarClient.createSmartWallet();
+
+          console.log("RESPUESTA SMART WALLET:", wallet);
+
+          const stellarAddress =
+            wallet.address ||
+            wallet.stellarAddress ||
+            wallet.publicKey ||
+            wallet.accountId;
+
+          if (!stellarAddress) {
+            throw new Error('No se encontró dirección Stellar');
+          }
+
+          // Guardar wallet en backend
+          const updatedUser = await api(`/users/${user.id}/wallet`, {
+            stellarAddress
+          });
+
+          // Actualizar sesión local
+          setUser(updatedUser);
+
+          walletStatus.textContent = stellarAddress;
+
+          toast('Wallet Pollar conectada ✓');
+
+        } catch (e) {
+          console.error('Error conectando Pollar:', e);
+          toast(e.message, '!');
+        } finally {
+          walletBtn.disabled = false;
+          walletBtn.textContent = '🔗 Conectar wallet Pollar';
+        }
+      });
+    }
     document.getElementById('welcomeName').textContent = `Hola, ${firstName(user.name)} 👋`;
     const activeBox = document.getElementById('dashboardActiveOrder');
     const activeStatus = document.getElementById('activeStatus');
