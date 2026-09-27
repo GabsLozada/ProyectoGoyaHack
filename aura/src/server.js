@@ -5,7 +5,7 @@ const config = require('./config');
 const orders = require('./orders');
 const stellar = require('./stellar');
 
-const router = orders.router  orders;
+const router = orders.router||orders;
 if (typeof router !== 'function') {
   throw new Error('orders.js no exporta un router válido: ' + JSON.stringify(Object.keys(orders)));
 }
