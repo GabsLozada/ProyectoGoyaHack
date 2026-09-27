@@ -20,7 +20,7 @@ app.use('/api', router);
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
-  const status = err.status  (err.type === 'entity.parse.failed' ? 400 : 500);
+  const status = err.status||(err.type === 'entity.parse.failed' ? 400 : 500);
   if (status >= 500) console.error(err);
   res.status(status).json({ error: err.message || 'Error interno' });
 });
