@@ -217,29 +217,17 @@ if (document.body.classList.contains('dashboard-page')) {
           walletBtn.disabled = true;
           walletBtn.textContent = 'Conectando wallet...';
 
-          if (!window.pollarClient) {
+          if (!window.pollarClient || typeof window.conectarWalletPollar !== 'function') {
             throw new Error('Pollar no está cargado');
           }
 
-          // Conectar o crear Smart Wallet del usuario
-          const wallet = await window.pollarClient.createSmartWallet();
-
-          console.log("RESPUESTA SMART WALLET:", wallet);
-
-          const stellarAddress =
-            wallet.address ||
-            wallet.stellarAddress ||
-            wallet.publicKey ||
-            wallet.accountId;
-
-          if (!stellarAddress) {
-            throw new Error('No se encontró dirección Stellar');
-          }
+          // Login con Pollar (Google) → crea/recupera la wallet Stellar embebida
+          const stellarAddress = await window.conectarWalletPollar('google');
 
           // Guardar wallet en backend
           const updatedUser = await api(`/users/${user.id}/wallet`, {
             stellarAddress
-          });
+          }, 'PUT');
 
           // Actualizar sesión local
           setUser(updatedUser);
