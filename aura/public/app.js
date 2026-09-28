@@ -423,8 +423,8 @@ if (document.getElementById('productList')) {
             items: Object.entries(cart).map(([menuItemId, qty]) => ({ menuItemId: Number(menuItemId), qty })),
           });
           confirmBtn.textContent = 'Procesando pago…';
-          try { await payOrder(order); }
-          catch (e) { toast(`Pago pendiente: ${e.message}`, '!'); }
+          try { await payOrder(order); sessionStorage.removeItem('aura_pay_error'); }
+          catch (e) { sessionStorage.setItem('aura_pay_error', e.message); toast(`Pago pendiente: ${e.message}`, '!'); }
           toast(`Pedido enviado. Tu código es ${order.deliveryCode}`, '🔐');
           goTo(`pedido.html?id=${order.id}`);
         } catch (e) {
@@ -495,7 +495,7 @@ if (document.getElementById('productList')) {
               <label for="txHashInput">Paga ${escapeHTML(o.pricing.totalAsset)} ${escapeHTML(o.pricing.asset)} a la custodia con el memo <b>${escapeHTML(o.payment.memo)}</b> y pega el hash</label>
               <div><input id="txHashInput" placeholder="txHash" style="letter-spacing:0;text-align:left"><button id="txHashBtn">Confirmar pago</button></div>
               <small>Custodia: ${escapeHTML(o.payment.escrowAddress)}</small>
-              <div class="form-error" id="txHashError"></div>
+              <div class="form-error" id="txHashError">${escapeHTML(sessionStorage.getItem('aura_pay_error') || '')}</div>
             </div>` : ''}
 
             <div class="tracking-motion ${moveClass}">

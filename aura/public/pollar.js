@@ -102,7 +102,11 @@ window.pagarConPollar = async function (order) {
       throw new Error(outcome.details || outcome.resultCode || "Pollar rechazó el pago");
     }
 
-    return outcome.hash;
+    const hash = outcome.hash || outcome.txHash || outcome.transactionHash || outcome.result?.hash;
+    if (!hash) {
+      throw new Error('Pollar no devolvió el hash del pago (estado: ' + outcome.status + '). Respuesta: ' + JSON.stringify(outcome).slice(0, 300));
+    }
+    return hash;
   } catch (error) {
     console.error("ERROR EN POLLAR:", error);
     throw error;
