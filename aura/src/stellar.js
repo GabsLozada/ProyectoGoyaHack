@@ -45,7 +45,7 @@ function assetMatches(op) {
  * con el memo del pedido y por al menos el monto esperado.
  * Devuelve la dirección que pagó (para reembolsos).
  */
-async function verifyPayment({ txHash, memo, minAmount }) {
+async function verifyPayment({ txHash, memo, minAmount, expectedFrom }) {
   if (config.simulate) return { from: 'GSIMULATED_PAYER', amount: minAmount, hash: txHash || `SIM-${crypto.randomUUID()}` };
 
   let tx;
@@ -55,7 +55,7 @@ async function verifyPayment({ txHash, memo, minAmount }) {
     throw new Error('Transacción no encontrada en Horizon (¿ya se confirmó?)');
   }
   if (!tx.successful) throw new Error('La transacción falló en la red');
-  if (tx.memo_type !== 'text' || tx.memo !== memo) throw new Error(`Memo incorrecto: se esperaba "${memo}"`);
+  const memoOk = tx.memo_type === 'text' && tx.memo === memo;
 
   const ops = await server.operations().forTransaction(txHash).call();
   const need = amountToStroops(minAmount);
@@ -65,6 +65,12 @@ async function verifyPayment({ txHash, memo, minAmount }) {
     && amountToStroops(op.amount) >= need);
 
   if (!pay) throw new Error('No hay un pago válido a la escrow por el monto del pedido');
+  // Pollar no siempre permite adjuntar memo al pago. Si falta el memo, aceptamos
+  // el pago solo si sale de la wallet registrada del comprador (el hash no se
+  // puede reutilizar: orders.payment_tx es UNIQUE).
+  if (!memoOk && !(expectedFrom && pay.from === expectedFrom)) {
+    throw new Error(`Memo incorrecto: se esperaba "${memo}" (o pagar desde la wallet registrada del comprador)`);
+  }
   return { from: pay.from, amount: pay.amount, hash: tx.hash };
 }
 

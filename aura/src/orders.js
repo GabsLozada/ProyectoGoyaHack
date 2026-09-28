@@ -204,7 +204,7 @@ router.post('/orders/:id/pay', h(async (req, res) => {
   if (!txHash && !config.simulate) throw new HttpError(400, 'Falta txHash');
 
   let p;
-  try { p = await stellar.verifyPayment({ txHash, memo: o.memo, minAmount: o.total_asset }); }
+  try { p = await stellar.verifyPayment({ txHash, memo: o.memo, minAmount: o.total_asset, expectedFrom: getUser(o.buyer_id).stellar_address }); }
   catch (e) { throw new HttpError(402, e.message); }
 
   try {

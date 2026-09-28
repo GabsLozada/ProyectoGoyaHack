@@ -132,7 +132,13 @@ async function payOrder(order) {
   if (cfg.simulate) return api(`/orders/${order.id}/pay`, {});
   if (typeof window.pagarConPollar === 'function') {
     const txHash = await window.pagarConPollar(order);
-    return api(`/orders/${order.id}/pay`, { txHash });
+    // Horizon puede tardar unos segundos en registrar el pago: reintentamos.
+    let lastErr;
+    for (let i = 0; i < 6; i++) {
+      try { return await api(`/orders/${order.id}/pay`, { txHash }); }
+      catch (e) { lastErr = e; console.warn('Verificando pago, intento', i + 1, e.message); await new Promise(r => setTimeout(r, 2500)); }
+    }
+    throw lastErr;
   }
   return null; // queda en PENDING_PAYMENT
 }
@@ -210,6 +216,11 @@ if (document.body.classList.contains('dashboard-page')) {
         // ===== Pollar Wallet =====
     const walletBtn = document.getElementById('connectWalletBtn');
     const walletStatus = document.getElementById('walletStatus');
+
+    // Si ya hay una wallet guardada, mostrarla al cargar la página
+    if (walletStatus && user.stellarAddress) {
+      walletStatus.textContent = user.stellarAddress;
+    }
 
     if (walletBtn) {
       walletBtn.addEventListener('click', async () => {
